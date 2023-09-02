@@ -1,5 +1,8 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('', views.home),
     path('product-detail/', views.product_detail, name='product-detail'),
@@ -15,4 +18,4 @@ urlpatterns = [
     path('logout/', views.logout, name='logout'),
     path('registration/', views.customerregistration, name='customerregistration'),
     path('checkout/', views.checkout, name='checkout'),
-]
+] + static(settings.MEDIA_URL, document_root =settings.MEDIA_ROOT)
